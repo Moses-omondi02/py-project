@@ -8,12 +8,7 @@ export default function TasksPage({ currentUser }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('Taskpage useEffect, currentUser:', currentUser);
-    if (!currentUser) {
-      console.log('No currentUser, navigating to login');
-      navigate('/login');
-      return;
-    }
+    console.log('Taskpage useEffect');
     console.log('Fetching tasks...');
     getTasks()
       .then((data) => {
@@ -23,11 +18,8 @@ export default function TasksPage({ currentUser }) {
       .catch((err) => {
         console.error('Error fetching tasks:', err);
       });
-  }, [currentUser, navigate]);
+  }, []);
 
-  if (!currentUser) {
-    return <div>Please log in to view tasks.</div>;
-  }
 
   const filteredTasks = tasks.filter(task =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

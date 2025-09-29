@@ -8,13 +8,16 @@ export default function Home({ currentUser }) {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
+    console.log('Home useEffect, fetching tasks');
     getTasks()
       .then((data) => {
+        console.log('Home tasks fetched:', data);
         const transformedTasks = data.map((task) => ({
           ...task,
           ngo: { id: task.ngo_id, name: task.ngo_name },
           date: task.due_date,
         }));
+        console.log('Transformed tasks:', transformedTasks);
         setTasks(transformedTasks);
       })
       .catch((err) => console.error("Failed to fetch tasks:", err));

@@ -14,7 +14,7 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://user:password@localhost/volunteer_db'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 
 class TestingConfig(Config):
     TESTING = True

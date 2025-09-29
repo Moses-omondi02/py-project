@@ -1,9 +1,9 @@
 {
   "build": {
-    "builder": "NIXPACKS",
-    "buildCommand": "cd client && npm install && npm run build && cd .. && pip install -r server/requirements.txt"
+    "builder": "nixpacks",
+    "buildCommand": "cd client && npm install && npm run build"
   },
   "deploy": {
-    "startCommand": "python server/app.py"
+    "startCommand": "cd server && python app.py"
   }
 }

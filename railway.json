@@ -4,7 +4,6 @@
     "buildCommand": "cd client && npm install && npm run build"
   },
   "deploy": {
-    "startCommand": "cd server && python app.py",
-    "restartPolicyType": "ON_FAILURE"
+    "startCommand": "cd server && python app.py"
   }
 }

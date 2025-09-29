@@ -7,7 +7,7 @@ import os
 
 def create_app(config_name=None):
     if config_name is None:
-        config_name = os.getenv('FLASK_ENV', 'default')
+        config_name = os.getenv('FLASK_ENV', 'production' if os.getenv('DATABASE_URL') else 'development')
     
     app = Flask(__name__)
     app.config.from_object(config[config_name])
@@ -134,4 +134,4 @@ app = create_app()
 
 # This allows us to use this file with Flask CLI commands
 if __name__ == '__main__':
-    app.run(debug=app.config['DEBUG'], host='0.0.0.0', port=5001)
+    app.run(debug=app.config['DEBUG'], host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))

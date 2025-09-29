@@ -8,13 +8,21 @@ export default function TasksPage({ currentUser }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log('Taskpage useEffect, currentUser:', currentUser);
     if (!currentUser) {
+      console.log('No currentUser, navigating to login');
       navigate('/login');
       return;
     }
+    console.log('Fetching tasks...');
     getTasks()
-      .then((data) => setTasks(data))
-      .catch((err) => console.error(err));
+      .then((data) => {
+        console.log('Tasks fetched:', data);
+        setTasks(data);
+      })
+      .catch((err) => {
+        console.error('Error fetching tasks:', err);
+      });
   }, [currentUser, navigate]);
 
   if (!currentUser) {

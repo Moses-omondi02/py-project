@@ -1,11 +1,15 @@
-const BASE_URL = import.meta.env.VITE_API_URL || "https://jaote-backend.onrender.com";
+const BASE_URL = "http://localhost:5001";
 
 export async function getTasks() {
+  console.log('getTasks called, BASE_URL:', BASE_URL);
   const res = await fetch(`${BASE_URL}/api/tasks`);
+  console.log('Fetch response status:', res.status);
   if (!res.ok) {
     throw new Error("Failed to fetch tasks");
   }
-  return res.json();
+  const data = await res.json();
+  console.log('Tasks data:', data);
+  return data;
 }
 
 export async function addTask(task) {

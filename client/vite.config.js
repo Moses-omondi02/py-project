@@ -10,6 +10,9 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    outDir: 'build'
+  },
   server: {
     proxy: {
       '/api': 'http://127.0.0.1:5000'
